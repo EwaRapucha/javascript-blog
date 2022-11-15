@@ -51,8 +51,13 @@ const titleClickHandler = function (event) {
     document.querySelector(optTitleListSelector).innerHTML = "";
 
     /* for each article */
+    const articles = document.querySelectorAll(".posts");
 
-    /* get the article id */
+    for (let article of articles) {
+      /* get the article id */
+      const articleId = clickedElement.getAttribute("id");
+      console.log(articleID);
+    }
 
     /* find the title element */
 
