@@ -83,5 +83,5 @@
       link.addEventListener('click', titleClickHandler);
     }
   }
-  generalTitleLinks();
+  generateTitleLinks();
 }
