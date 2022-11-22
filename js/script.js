@@ -76,9 +76,9 @@
       /* insert link into html variable */
       html = html + linkHTML;
       console.log(html);
-
-      titleList.innerHTML = html;
     }
+    titleList.innerHTML = html;
+
     const links = document.querySelectorAll(".titles a");
 
     for (let link of links) {
