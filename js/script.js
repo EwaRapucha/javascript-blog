@@ -113,18 +113,18 @@
         console.log(tag);
 
         /* generate HTML of the link */
-        const linkHTML = '<li><a href="#tag-' + articleTagsArray + '">' + articleTagsArray + '</a></li>';
+        const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
         console.log(linkHTML);
 
         /* add generated code to HTML variable */
         html = html + linkHTML;
         console.log(html);
+        /* END LOOP: for each tag */
       }
+      /* insert HTML of all the links into the tags wrapper */
+      wrapper.innerHTML = html;
+      /* END LOOP: for every article: */
     }
-
-    /* END LOOP: for each tag */
-    /* insert HTML of all the links into the tags wrapper */
-    /* END LOOP: for every article: */
   }
 
   generateTags();
