@@ -176,15 +176,14 @@
   }
 
   function addClickListenersToTags() {
-
     /* find all links to tags */
     const links = document.querySelectorAll('data-tags');
     console.log(links);
 
     /* START LOOP: for each link */
     /* add tagClickHandler as event listener for that link */
-    for (let link of links){
-      link.addEventListener('click'; tagClickHandler);
+    for (let link of links) {
+      link.addEventListener('click', tagClickHandler);
     }
     /* END LOOP: for each link */
   }
