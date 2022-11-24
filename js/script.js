@@ -161,7 +161,7 @@
 
     /* find all tag links with "href" attribute equal to the "href" constant */
     const activeHrefs = document.querySelectorAll('a[href="' + href + '"]');
-    console.log(activeHref);
+    console.log(activeHrefs);
 
     /* START LOOP: for each found tag link */
     /* add class active */
