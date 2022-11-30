@@ -246,7 +246,7 @@ function authorClickHandler(event) {
   generateTitleLinks('[data-author~="' + author + '"]');
 }
 
-function addClickListenerstoAuthors() {
+function addClickListenersToAuthors() {
   const links = document.querySelectorAll('.post .post-author a');
   console.log(links);
 
@@ -254,4 +254,4 @@ function addClickListenerstoAuthors() {
     link.addEventListener('click', authorClickHandler);
   }
 }
-addClickListenerstoAuthors();
+addClickListenersToAuthors();
