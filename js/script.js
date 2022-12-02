@@ -222,7 +222,7 @@ function authorClickHandler(event) {
   const href = clickedElement.getAttribute('href');
   console.log(href);
 
-  const author = document.querySelector('data-author');
+  const author = href.replace('#', '');
   console.log(author);
 
   const activeLinks = document.querySelectorAll('a.active[href="' + href + '"]');
@@ -238,7 +238,8 @@ function authorClickHandler(event) {
   for (let activeHref of activeHrefs) {
     activeHref.classList.add('active');
   }
-  generateTitleLinks('[data-author~="' + author + '"]');
+
+  generateTitleLinks('[data-author="' + author + '"]');
 }
 
 function addClickListenersToAuthors() {
