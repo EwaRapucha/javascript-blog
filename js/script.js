@@ -45,9 +45,9 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post .post-author',
-  optTagsListSelector = '.tags.list',
-  optCloudClassCount = 5,
-  optCloudClassPrefix = '.tag-size-';
+  optTagsListSelector = '.tags.list';
+/*optCloudClassCount = 5,
+  optCloudClassPrefix = '.tag-size-';*/
 
 function generateTitleLinks(customSelector = '') {
   /* remove contents of titleList */
