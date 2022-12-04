@@ -102,15 +102,18 @@ function calculateTagsParams(tags) {
 }
 calculateTagsParams();
 
-function calculateTagClass(count, params) {
+/*function calculateTagClass(count, params) {
   console.log(calculateTagClass);
+
 
   const normalizedCount = count - params.min;
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCount / normalizedMax;
   const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
   console.log(classNumber);
-}
+
+  return optCloudClassPrefix + classNumber;
+}*/
 
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty object */
