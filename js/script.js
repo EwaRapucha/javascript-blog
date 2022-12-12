@@ -238,19 +238,19 @@ function addClickListenersToTags() {
 
 addClickListenersToTags();
 
-function calculateAuthorsParams(authors) {
-  console.log(authors);
+function calculateAuthorsParams(articleAuthors) {
+  console.log(articleAuthors);
 
   const params = { max: 0, min: 999999 };
   console.log('params');
 
-  for (let author in authors) {
-    console.log(author + ' is used ' + authors[author] + 'times');
-    if (authors[author] > params.max) {
-      params.max = authors[author];
+  for (let author in articleAuthors) {
+    console.log(author + ' is used ' + articleAuthors[author] + 'times');
+    if (articleAuthors[author] > params.max) {
+      params.max = articleAuthors[author];
     }
-    if (authors[author] < params.min) {
-      params.min = authors[author];
+    if (articleAuthors[author] < params.min) {
+      params.min = articleAuthors[author];
     }
   }
 
