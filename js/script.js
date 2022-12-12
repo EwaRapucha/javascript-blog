@@ -238,10 +238,39 @@ function addClickListenersToTags() {
 
 addClickListenersToTags();
 
+function calculateAuthorsParams(authors) {
+  console.log(authors);
+
+  const params = { max: 0, min: 999999 };
+  console.log('params');
+
+  for (let author in authors) {
+    console.log(author + ' is used ' + authors[author] + 'times');
+    if (authors[author] > params.max) {
+      params.max = authors[author];
+    }
+    if (authors[author] < params.min) {
+      params.min = authors[author];
+    }
+  }
+
+  return params;
+}
+
+function calculateAuthorClass(count, params) {
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor(percentage * (optCloudClassCount - 1) + 1);
+  console.log(classNumber);
+
+  return optCloudClassPrefix + classNumber;
+}
+
 function generateAuthors() {
   /* [NEW] create a new variable allAuthors with an empy object */
-  let allAuthors = {};
-  console.log(allAuthors);
+  let allArticleAuthors = {};
+  console.log(allArticleAuthors);
 
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
@@ -265,6 +294,13 @@ function generateAuthors() {
       /* add generated code to HTML variable */
       html = html + linkHTML;
 
+      /* [NEW] check if this link is NOT already in allAuthors */
+      if (!allArticleAuthors[author]) {
+        /* [NEW] add author to allAuthors object */
+        allArticleAuthors[author] = 1;
+      } else {
+        allArticleAuthors[author]++;
+      }
       /* and loop for each author */
     }
 
@@ -273,8 +309,26 @@ function generateAuthors() {
     /* END LOOP: for every article: */
   }
 
+  /* [NEW] find list of authors in right column */
   const authorList = document.querySelector(optAuthorsListSelector);
   console.log(authorList);
+
+  /* [NEW] add html from allAuthors to authorList */
+  /* authorList.innerHTML = allAuthors.join(''); */
+
+  const authorsParams = calculateAuthorsParams(allArticleAuthors);
+  console.log('authorsParams:', authorsParams);
+
+  /* [NEW] create variable for all links HTML code */
+  let allArticleAuthorsHTML = '';
+
+  /* [NEW] start loop for each author in allAuthors: */
+  for (let author in allArticleAuthors) {
+    const className = calculateAuthorClass(allArticleAuthors[author], authorsParams);
+    allArticleAuthorsHTML += '<li><a class= "' + className + '"href="#data-author' + author + '">' + author + ' </a></li> ';
+  }
+  authorList.innerHTML = allArticleAuthorsHTML;
+  console.log(allArticleAuthors);
 }
 
 generateAuthors();
