@@ -286,22 +286,17 @@ function generateAuthors() {
     /* get authors from data-authors attribute */
     const articleAuthors = article.getAttribute('data-author');
 
-    /* start loop for each author */
-    for (let author of articleAuthors) {
-      /* generate HTML of the link */
-      const linkHTML = '<a href="#data-author' + author + '">' + author + '</a>';
+    const authorName = article.querySelector(optArticleAuthorSelector);
 
-      /* add generated code to HTML variable */
-      html = html + linkHTML;
+    /* generate HTML of the link */
+    const linkHTML = '<a href="#' + articleAuthors + '"><span>' + authorName + '</span></a>';
 
-      /* [NEW] check if this link is NOT already in allAuthors */
-      if (!allArticleAuthors[author]) {
-        /* [NEW] add author to allAuthors object */
-        allArticleAuthors[author] = 1;
-      } else {
-        allArticleAuthors[author]++;
-      }
-      /* and loop for each author */
+    /* add generated code to HTML variable */
+    html = html + linkHTML;
+
+    /* [NEW] check if this link is NOT already in allAuthors */
+    if (allArticleAuthors.indexOf(linkHTML) == -1) {
+      allArticleAuthors.push(linkHTML);
     }
 
     /* insert HTML of all the links into the authors wrapper */
@@ -314,7 +309,7 @@ function generateAuthors() {
   console.log(authorList);
 
   /* [NEW] add html from allAuthors to authorList */
-  /* authorList.innerHTML = allAuthors.join(''); */
+  authorList.innerHTML = allArticleAuthors.join('');
 
   const authorsParams = calculateAuthorsParams(allArticleAuthors);
   console.log('authorsParams:', authorsParams);
@@ -325,7 +320,7 @@ function generateAuthors() {
   /* [NEW] start loop for each author in allAuthors: */
   for (let author in allArticleAuthors) {
     const className = calculateAuthorClass(allArticleAuthors[author], authorsParams);
-    allArticleAuthorsHTML += '<li><a class= "' + className + '"href="#data-author' + author + '">' + author + ' </a></li> ';
+    allArticleAuthorsHTML += '<a class= "' + className + '" href="#data-author' + author + '">' + author + ' </a> ';
   }
   authorList.innerHTML = allArticleAuthorsHTML;
   console.log(allArticleAuthors);
