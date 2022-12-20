@@ -257,19 +257,17 @@ function generateAuthors() {
     /* get authors from data-authors attribute */
     const articleAuthors = article.getAttribute('data-author');
 
-    const author = article.querySelector(optArticleAuthorSelector);
-
     /* generate HTML of the link */
-    const linkHTML = '<a href="#' + articleAuthors + '"><span>' + author + '</span></a>';
+    const linkHTML = '<a href="#' + articleAuthors + '"><span>' + articleAuthors + '</span></a>';
 
     /* add generated code to HTML variable */
     html = html + linkHTML;
 
     /* [NEW] check if this link is NOT already in allAuthors */
-    if (!allArticleAuthors[author]) {
-      allArticleAuthors[author] = 1;
+    if (!allArticleAuthors[articleAuthors]) {
+      allArticleAuthors[articleAuthors] = 1;
     } else {
-      allArticleAuthors[author]++;
+      allArticleAuthors[articleAuthors]++;
     }
 
     /* insert HTML of all the links into the authors wrapper */
