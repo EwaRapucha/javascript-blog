@@ -280,12 +280,15 @@ function generateAuthors() {
   console.log(authorList);
 
   /* [NEW] add html from allAuthors to authorList */
-  /*authorList.innerHTML = allArticleAuthors.join('');*/
+  authorList.innerHTML = allArticleAuthors.join('');
 
   /* [NEW] create variable for all links HTML code */
   let allArticleAuthorsHTML = '';
 
   /* [NEW] start loop for each author in allAuthors: */
+  for (let articleAuthors in allArticleAuthors) {
+    allArticleAuthorsHTML = +'<a href="#' + articleAuthors + '"><span>' + articleAuthors + '</span></a>';
+  }
 
   authorList.innerHTML = allArticleAuthorsHTML;
   console.log(allArticleAuthors);
